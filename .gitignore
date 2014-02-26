@@ -1,0 +1,7 @@
+.installed.cfg
+.mr.developer.cfg
+parts
+src
+bin
+develop-eggs
+contents/*
