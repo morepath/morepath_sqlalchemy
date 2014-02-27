@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 
 setup(name='morepath_sqlalchemy',
-      version = '0.1dev',
+      version='0.1dev',
       description="Morepath SQLAlchemy Demo",
       author="Martijn Faassen",
       author_email="faassen@startifact.com",
@@ -14,6 +14,7 @@ setup(name='morepath_sqlalchemy',
         'setuptools',
         'morepath',
         'transaction',
+        'more.transaction',
         'zope.sqlalchemy >= 0.7.4',
         'sqlalchemy >= 0.9',
         ],
