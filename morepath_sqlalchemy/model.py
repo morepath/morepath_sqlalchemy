@@ -11,6 +11,10 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+class Root(object):
+    pass
+
+
 class Document(Base):
     __tablename__ = 'document'
 
