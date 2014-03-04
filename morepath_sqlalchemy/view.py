@@ -44,7 +44,7 @@ content: <input type="text" name="content"><br>
 
 @app.html(model=DocumentCollection, name='add_submit', request_method='POST')
 def document_collection_add_submit(self, request):
-    title = request.form.get('title')
-    content = request.form.get('content')
+    title = request.POST.get('title')
+    content = request.POST.get('content')
     document = self.add(title=title, content=content)
     return "<p>Awesome %s</p>" % document.id
