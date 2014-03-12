@@ -8,7 +8,7 @@ from .model import Base
 Session = scoped_session(sessionmaker())
 register(Session)
 
-app = morepath.App(extends=[transaction_app])
+app = morepath.App(name='SQLAlchemy demo', extends=[transaction_app])
 
 def main():
     engine = sqlalchemy.create_engine('sqlite:///morepath_sqlalchemy.db')
@@ -17,4 +17,4 @@ def main():
     Base.metadata.bind = engine
 
     morepath.autosetup()
-    app.run()
+    morepath.run(app)
