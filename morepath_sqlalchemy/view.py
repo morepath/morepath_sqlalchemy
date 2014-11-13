@@ -1,15 +1,15 @@
 from .model import Document, Root
-from .main import app
+from .main import App
 from .collection import DocumentCollection
 from morepath import redirect
 
 
-@app.json(model=Root)
+@App.json(model=Root)
 def root_default(self, request):
     return redirect('/documents')
 
 
-@app.json(model=Document)
+@App.json(model=Document)
 def document_default(self, request):
     return {'id': self.id,
             'title': self.title,
@@ -17,7 +17,7 @@ def document_default(self, request):
             'link': request.link(self) }
 
 
-@app.json(model=DocumentCollection)
+@App.json(model=DocumentCollection)
 def document_collection_default(self, request):
     return {
         'documents': [request.view(doc) for doc in self.query()],
@@ -27,7 +27,7 @@ def document_collection_default(self, request):
         }
 
 
-@app.html(model=DocumentCollection, name='add')
+@App.html(model=DocumentCollection, name='add')
 def document_collection_add(self, request):
     return '''\
 <html>
@@ -42,7 +42,7 @@ content: <input type="text" name="content"><br>
 '''
 
 
-@app.html(model=DocumentCollection, name='add_submit', request_method='POST')
+@App.html(model=DocumentCollection, name='add_submit', request_method='POST')
 def document_collection_add_submit(self, request):
     title = request.POST.get('title')
     content = request.POST.get('content')

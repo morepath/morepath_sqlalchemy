@@ -8,7 +8,7 @@ from .model import Base
 Session = scoped_session(sessionmaker())
 register(Session)
 
-class app(transaction_app):
+class App(transaction_app):
     pass
 
 def main():
@@ -18,4 +18,4 @@ def main():
     Base.metadata.bind = engine
 
     morepath.autosetup()
-    morepath.run(app())
+    morepath.run(App())
