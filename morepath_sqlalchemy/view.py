@@ -11,10 +11,12 @@ def root_default(self, request):
 
 @App.json(model=Document)
 def document_default(self, request):
-    return {'id': self.id,
-            'title': self.title,
-            'content': self.content,
-            'link': request.link(self) }
+    return {
+        'id': self.id,
+        'title': self.title,
+        'content': self.content,
+        'link': request.link(self)
+    }
 
 
 @App.json(model=DocumentCollection)

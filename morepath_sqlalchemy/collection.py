@@ -32,4 +32,3 @@ class DocumentCollection(object):
         if new_offset >= count:
             return None
         return DocumentCollection(new_offset, self.limit)
-
