@@ -1,15 +1,18 @@
 import morepath
 import sqlalchemy
-from more.transaction import transaction_app
+from more.transaction import TransactionApp
 from sqlalchemy.orm import scoped_session, sessionmaker
 from zope.sqlalchemy import register
 from .model import Base
 
+
 Session = scoped_session(sessionmaker())
 register(Session)
 
-class App(transaction_app):
+
+class App(TransactionApp):
     pass
+
 
 def main():
     engine = sqlalchemy.create_engine('sqlite:///morepath_sqlalchemy.db')
