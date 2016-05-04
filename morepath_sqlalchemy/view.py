@@ -1,5 +1,5 @@
 from .model import Document, Root
-from .main import App
+from .app import App
 from .collection import DocumentCollection
 from morepath import redirect
 
@@ -26,7 +26,7 @@ def document_collection_default(self, request):
         'previous': request.link(self.previous(), default=None),
         'next': request.link(self.next(), default=None),
         'add': request.link(self, 'add'),
-        }
+    }
 
 
 @App.html(model=DocumentCollection, name='add')

@@ -1,0 +1,11 @@
+language: python
+
+cache: pip
+env:
+    - TOXENV=pep8
+before_install:
+    - pip install --upgrade pip setuptools
+install:
+    - pip install tox
+script:
+    - tox -e $TOXENV

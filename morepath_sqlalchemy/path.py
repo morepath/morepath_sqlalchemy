@@ -1,4 +1,5 @@
-from .main import App, Session
+from .app import App
+from .run import Session
 from .model import Document, Root
 from .collection import DocumentCollection
 
