@@ -1,13 +1,12 @@
-Morepath SQLAlchemy Demo
-========================
+SQLAlchemy integration for Morepath
+===================================
 
-Show how to create a server web application with Morepath that integrates
-a database based on SQLAlchemy.
-It uses the more.transaction plugin.
+Demonstrate SQLAlchemy integration with Morepath through more.transaction.
 
-See also more.transaction on Github:
+See the `more.transaction documentation`_ to learn more about what is going
+on.
 
-https://github.com/morepath/more.transaction
+.. _`more.transaction documentation`: https://github.com/morepath/more.transaction
 
 Installation
 ------------
