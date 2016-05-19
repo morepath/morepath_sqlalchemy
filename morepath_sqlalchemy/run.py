@@ -1,8 +1,10 @@
-import morepath
 import sqlalchemy
-from .session import Session
-from .model import Base
+
+import morepath
+
 from .app import App
+from .model import Base
+from .session import Session
 
 
 def run():   # pragma: no cover

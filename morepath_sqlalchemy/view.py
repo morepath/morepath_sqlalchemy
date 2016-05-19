@@ -1,7 +1,8 @@
-from .model import Document, Root
+from morepath import redirect
+
 from .app import App
 from .collection import DocumentCollection
-from morepath import redirect
+from .model import Document, Root
 
 
 @App.json(model=Root)
