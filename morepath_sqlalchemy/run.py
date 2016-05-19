@@ -1,13 +1,8 @@
 import morepath
 import sqlalchemy
-from sqlalchemy.orm import scoped_session, sessionmaker
-from zope.sqlalchemy import register
+from .session import Session
 from .model import Base
 from .app import App
-
-
-Session = scoped_session(sessionmaker())
-register(Session)
 
 
 def run():   # pragma: no cover
