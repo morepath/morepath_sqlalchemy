@@ -20,7 +20,7 @@ setup(
     author='Morepath developers',
     author_email='morepath@googlegroups.com',
     license="BSD",
-    url="https://github.com/morepath/morepath_batching",
+    url="https://github.com/morepath/morepath_sqlalchemy",
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
