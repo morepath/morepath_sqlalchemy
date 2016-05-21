@@ -1,7 +1,7 @@
 from .app import App
 from .collection import DocumentCollection
 from .model import Document, Root
-from .session import Session
+from .dbsession import Session
 
 
 @App.path(model=Root, path='/')

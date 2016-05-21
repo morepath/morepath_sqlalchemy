@@ -4,7 +4,7 @@ import morepath
 
 from .app import App
 from .model import Base
-from .session import Session
+from .dbsession import Session
 
 
 def run():   # pragma: no cover

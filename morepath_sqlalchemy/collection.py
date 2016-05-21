@@ -1,5 +1,5 @@
 from .model import Document
-from .session import Session
+from .dbsession import Session
 
 MAX_LIMIT = 20
 
