@@ -1,19 +1,19 @@
 from .model import Document
-from .dbsession import Session
 
 MAX_LIMIT = 20
 
 
 class DocumentCollection(object):
-    def __init__(self, offset, limit):
+    def __init__(self, request, offset, limit):
+        self.db_session = request.db_session
         self.offset = offset
         self.limit = min(limit, MAX_LIMIT)
 
     def query(self):
-        return Session.query(Document).offset(self.offset).limit(self.limit)
+        return self.db_session.query(Document).offset(self.offset).limit(self.limit)
 
     def add(self, title, content):
-        session = Session()
+        session = self.db_session
         document = Document(title=title, content=content)
         session.add(document)
         session.flush()
@@ -26,7 +26,7 @@ class DocumentCollection(object):
         return DocumentCollection(new_offset, self.limit)
 
     def next(self):
-        count = Session.query(Document.id).count()
+        count = self.db_session.query(Document.id).count()
         new_offset = self.offset + self.limit
         if new_offset >= count:
             return None
