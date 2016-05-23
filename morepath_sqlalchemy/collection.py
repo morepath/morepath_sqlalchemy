@@ -10,7 +10,8 @@ class DocumentCollection(object):
         self.limit = min(limit, MAX_LIMIT)
 
     def query(self):
-        return self.db_session.query(Document).offset(self.offset).limit(self.limit)
+        return self.db_session.query(Document).offset(self.offset) \
+            .limit(self.limit)
 
     def add(self, title, content):
         session = self.db_session
