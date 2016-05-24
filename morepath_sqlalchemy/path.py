@@ -16,4 +16,4 @@ def get_document(request, id):
 
 @App.path(model=DocumentCollection, path='documents')
 def get_document_collection(request, offset=0, limit=10):
-    return DocumentCollection(request, offset, limit)
+    return DocumentCollection(request.db_session, offset, limit)

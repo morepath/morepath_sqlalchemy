@@ -4,8 +4,8 @@ MAX_LIMIT = 20
 
 
 class DocumentCollection(object):
-    def __init__(self, request, offset, limit):
-        self.db_session = request.db_session
+    def __init__(self, db_session, offset, limit):
+        self.db_session = db_session
         self.offset = offset
         self.limit = min(limit, MAX_LIMIT)
 
