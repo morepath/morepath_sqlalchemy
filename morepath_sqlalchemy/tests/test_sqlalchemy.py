@@ -34,7 +34,10 @@ def test_documents():
 def test_add_submit():
     c = Client(App())
 
-    response = c.post('/documents/add_submit', {'title': 'My Title', 'content': 'My Content'})
+    response = c.post(
+        '/documents/add_submit',
+        {'title': 'My Title', 'content': 'My Content'}
+    )
 
     assert response.body == '<p>Awesome 1</p>'
 
