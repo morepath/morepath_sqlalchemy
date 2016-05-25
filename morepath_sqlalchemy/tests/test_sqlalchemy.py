@@ -12,6 +12,7 @@ from morepath_sqlalchemy.model import Base
 def setup_module(module):
     engine = sqlalchemy.create_engine('sqlite:///:memory:')
     Session.configure(bind=engine)
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
     morepath.disable_implicit()
