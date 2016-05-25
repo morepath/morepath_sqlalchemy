@@ -24,11 +24,11 @@ class DocumentCollection(object):
         if self.offset == 0:
             return None
         new_offset = max(self.offset - self.limit, 0)
-        return DocumentCollection(new_offset, self.limit)
+        return DocumentCollection(self.db_session, new_offset, self.limit)
 
     def next(self):
         count = self.db_session.query(Document.id).count()
         new_offset = self.offset + self.limit
         if new_offset >= count:
             return None
-        return DocumentCollection(new_offset, self.limit)
+        return DocumentCollection(self.db_session, new_offset, self.limit)
