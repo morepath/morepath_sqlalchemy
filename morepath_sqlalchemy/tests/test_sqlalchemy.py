@@ -24,12 +24,13 @@ def test_documents():
     c = Client(App())
 
     collection_response = c.get('/documents')
-    assert collection_response.json == {
-        "documents": [],
-        "add": "http://localhost/documents/add?limit=10&offset=0",
-        "previous": None,
-        "next": None
-    }
+
+    assert collection_response.json["documents"] == []
+    assert "http://localhost/documents/add?" in collection_response.json["add"]
+    assert "limit=10" in collection_response.json["add"]
+    assert "offset=0" in collection_response.json["add"]
+    assert collection_response.json["previous"] is None
+    assert collection_response.json["next"] is None
 
 
 def test_add_submit():
@@ -40,7 +41,7 @@ def test_add_submit():
         {'title': 'My Title', 'content': 'My Content'}
     )
 
-    assert response.body == '<p>Awesome 1</p>'
+    assert response.body == b'<p>Awesome 1</p>'
 
 
 def test_document():
@@ -63,34 +64,38 @@ def test_previous_next():
     c.post('/documents/add_submit', {'title': 'Two', 'content': 'Secundus'})
 
     response = c.get('/documents/?limit=1&offset=0')
-    new_document_response = {
-        "documents": [{
-            "id": 1,
-            "title": "My Title",
-            "content": "My Content",
-            "link": "http://localhost/documents/1"
-        }],
-        "add": "http://localhost/documents/add?limit=1&offset=0",
-        "previous": None,
-        "next": "http://localhost/documents?limit=1&offset=1"
-    }
+    expected_documents = [{
+        "id": 1,
+        "title": "My Title",
+        "content": "My Content",
+        "link": "http://localhost/documents/1"
+    }]
 
-    assert response.json == new_document_response
+    assert response.json["documents"] == expected_documents
+    assert "http://localhost/documents/add?" in response.json["add"]
+    assert "limit=1" in response.json["add"]
+    assert "offset=0" in response.json["add"]
+    assert response.json["previous"] is None
+    assert "http://localhost/documents?" in response.json["next"]
+    assert "limit=1" in response.json["next"]
+    assert "offset=1" in response.json["next"]
 
     response = c.get('/documents/?limit=1&offset=1')
-    new_document_response = {
-        "documents": [{
-            "id": 2,
-            "title": "Two",
-            "content": "Secundus",
-            "link": "http://localhost/documents/2"
-        }],
-        "add": "http://localhost/documents/add?limit=1&offset=1",
-        "previous": "http://localhost/documents?limit=1&offset=0",
-        "next": None
-    }
+    expected_documents = [{
+        "id": 2,
+        "title": "Two",
+        "content": "Secundus",
+        "link": "http://localhost/documents/2"
+    }]
 
-    assert response.json == new_document_response
+    assert response.json["documents"] == expected_documents
+    assert "http://localhost/documents/add?" in response.json["add"]
+    assert "limit=1" in response.json["add"]
+    assert "offset=1" in response.json["add"]
+    assert "http://localhost/documents?" in response.json["previous"]
+    assert "limit=1" in response.json["previous"]
+    assert "offset=0" in response.json["previous"]
+    assert response.json["next"] is None
 
 
 def test_add():
@@ -98,7 +103,7 @@ def test_add():
 
     response = c.get('/documents/add')
 
-    expected = '''\
+    expected_response = b'''\
 <html>
 <body>
 <form action="/documents/add_submit" method="POST">
@@ -110,7 +115,7 @@ content: <input type="text" name="content"><br>
 </html>
 '''
 
-    assert response.body == expected
+    assert response.body == expected_response
 
 
 def test_root():
