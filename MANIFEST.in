@@ -2,6 +2,7 @@ recursive-include morepath_batching *
 include *.txt
 include *.rst
 include *.ini
+include *.db
 include LICENSE
 global-exclude *.pyc
 global-exclude *.pyo
