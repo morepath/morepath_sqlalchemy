@@ -11,7 +11,7 @@ description = (
 long_description = (
     io.open('README.rst', encoding='utf-8').read() + '\n\n' +
     io.open('CHANGES.rst', encoding='utf-8').read())
-version = '0.1'
+version = '0.2.dev0'
 
 setup(
     name=name,
