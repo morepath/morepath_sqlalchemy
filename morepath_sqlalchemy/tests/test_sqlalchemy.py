@@ -14,7 +14,6 @@ def setup_module(module):
     Session.configure(bind=engine)
     Base.metadata.create_all(engine)
 
-    morepath.disable_implicit()
     morepath.scan(morepath_sqlalchemy)
     morepath.commit(App)
 
