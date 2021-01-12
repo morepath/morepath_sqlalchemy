@@ -3,15 +3,14 @@ from .model import Document
 MAX_LIMIT = 20
 
 
-class DocumentCollection(object):
+class DocumentCollection:
     def __init__(self, db_session, offset, limit):
         self.db_session = db_session
         self.offset = offset
         self.limit = min(limit, MAX_LIMIT)
 
     def query(self):
-        return self.db_session.query(Document).offset(self.offset) \
-            .limit(self.limit)
+        return self.db_session.query(Document).offset(self.offset).limit(self.limit)
 
     def add(self, title, content):
         session = self.db_session
