@@ -10,7 +10,6 @@ register(Session)
 
 
 class DBSessionRequest(Request):
-
     @reify
     def db_session(self):
         return Session()
