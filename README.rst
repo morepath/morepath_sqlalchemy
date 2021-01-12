@@ -1,3 +1,17 @@
+.. image:: https://github.com/morepath/morepath_sqlalchemy/workflows/CI/badge.svg?branch=master
+   :target: https://github.com/morepath/morepath_sqlalchemy/actions?workflow=CI
+   :alt: CI Status
+
+.. image:: https://coveralls.io/repos/github/morepath/morepath_sqlalchemy/badge.svg?branch=master
+    :target: https://coveralls.io/github/morepath/morepath_sqlalchemy?branch=master
+
+.. image:: https://img.shields.io/pypi/v/morepath_sqlalchemy.svg
+  :target: https://pypi.org/project/morepath_sqlalchemy/
+
+.. image:: https://img.shields.io/pypi/pyversions/morepath_sqlalchemy.svg
+  :target: https://pypi.org/project/morepath_sqlalchemy/
+
+
 SQLAlchemy integration for Morepath
 ===================================
 
